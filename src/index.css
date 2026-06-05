@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   THEME VARIABLES
+   Dark theme is the default (:root). The .light class on <html> overrides it.
+   Values are space-separated RGB so Tailwind can apply opacity.
+   ========================================================================= */
+:root {
+  --bg: 7 9 16; /* deep near-black */
+  --surface: 16 20 33; /* card surface */
+  --line: 38 46 66; /* borders */
+  --text: 233 238 252; /* main text */
+  --muted: 142 152 178; /* secondary text */
+  --primary: 34 211 238; /* electric cyan */
+  --accent: 163 230 53; /* lime */
+}
+
+html.light {
+  --bg: 245 247 251;
+  --surface: 255 255 255;
+  --line: 214 222 235;
+  --text: 17 24 39;
+  --muted: 90 102 124;
+  --primary: 8 145 178; /* deeper cyan for contrast on light */
+  --accent: 77 124 15; /* deeper lime/green */
+}
+
+/* =========================================================================
+   BASE STYLES
+   ========================================================================= */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: "Outfit", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Custom selection colour */
+::selection {
+  background: rgb(var(--primary) / 0.3);
+  color: rgb(var(--text));
+}
+
+/* Slim themed scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary) / 0.4);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--primary) / 0.7);
+}
+
+/* =========================================================================
+   REUSABLE UTILITIES
+   ========================================================================= */
+
+/* Frosted glass panel */
+.glass {
+  background: rgb(var(--surface) / 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgb(var(--line) / 0.7);
+}
+
+/* Gradient text (cyan -> lime) */
+.text-gradient {
+  background: linear-gradient(
+    100deg,
+    rgb(var(--primary)),
+    rgb(var(--accent))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft neon glow behind elements */
+.neon-glow {
+  box-shadow: 0 0 24px rgb(var(--primary) / 0.25),
+    0 0 60px rgb(var(--primary) / 0.12);
+}
+
+/* Subtle dotted grid background layer */
+.grid-bg {
+  background-image: radial-gradient(
+    rgb(var(--line) / 0.5) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
+}
+
+/* Animated gradient border helper */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    rgb(var(--primary) / 0.7),
+    transparent 40%,
+    rgb(var(--accent) / 0.6)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
