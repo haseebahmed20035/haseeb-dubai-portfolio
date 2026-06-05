@@ -10,14 +10,15 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d", { alpha: true });
 
     let animationId;
-    let particles = [];
     let width = 0;
     let height = 0;
+    let particles = [];
     let lastFrame = 0;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const shouldAnimate = !reduceMotion && !isMobile;
+
     const dotColor = theme === "light" ? "8, 145, 178" : "34, 211, 238";
 
     function resize() {
@@ -57,6 +58,7 @@ export default function ParticleBackground() {
         if (shouldAnimate) {
           p.x += p.vx;
           p.y += p.vy;
+
           if (p.x < 0 || p.x > width) p.vx *= -1;
           if (p.y < 0 || p.y > height) p.vy *= -1;
         }
@@ -103,7 +105,9 @@ export default function ParticleBackground() {
     window.addEventListener("resize", resize, { passive: true });
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    if (shouldAnimate) animationId = requestAnimationFrame(draw);
+    if (shouldAnimate) {
+      animationId = requestAnimationFrame(draw);
+    }
 
     return () => {
       cancelAnimationFrame(animationId);

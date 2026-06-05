@@ -28,10 +28,9 @@ export default function App() {
           <Contact />
         </Suspense>
       </main>
-
       <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </div>
   );
-}b
+}

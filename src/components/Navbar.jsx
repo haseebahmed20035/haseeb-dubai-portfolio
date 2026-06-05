@@ -18,6 +18,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Add a stronger glass background once the user scrolls down a bit.
   useEffect(() => {
   let ticking = false;
 
