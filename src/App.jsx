@@ -1,15 +1,16 @@
+import { lazy, Suspense } from "react";
 import ParticleBackground from "./components/ParticleBackground.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import Skills from "./components/Skills.jsx";
-import Experience from "./components/Experience.jsx";
-import Projects from "./components/Projects.jsx";
-import Education from "./components/Education.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
 
-// The main app: a subtle dotted grid + animated particles behind all content.
+const About = lazy(() => import("./components/About.jsx"));
+const Skills = lazy(() => import("./components/Skills.jsx"));
+const Experience = lazy(() => import("./components/Experience.jsx"));
+const Projects = lazy(() => import("./components/Projects.jsx"));
+const Education = lazy(() => import("./components/Education.jsx"));
+const Contact = lazy(() => import("./components/Contact.jsx"));
+const Footer = lazy(() => import("./components/Footer.jsx"));
+
 export default function App() {
   return (
     <div className="relative min-h-screen grid-bg">
@@ -18,15 +19,19 @@ export default function App() {
 
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Education />
+          <Contact />
+        </Suspense>
       </main>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
-}
+}b

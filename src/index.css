@@ -137,3 +137,24 @@ body {
     transition-duration: 0.001ms !important;
   }
 }
+/* Mobile performance fixes */
+@media (max-width: 768px) {
+  .glass {
+    background: rgb(var(--surface) / 0.88);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .neon-glow {
+    box-shadow: none;
+  }
+
+  .blur-\[120px\],
+  .blur-3xl {
+    filter: blur(36px);
+  }
+
+  .grid-bg {
+    background-size: 48px 48px;
+  }
+}
