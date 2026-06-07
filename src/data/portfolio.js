@@ -138,6 +138,13 @@ export const projects = [
 // ----- Education timeline (EDIT THESE) -----
 export const education = [
   {
+    degree: "MS Artficial Intelligence",
+    school: "LUMS",
+    location: "Lahore, Pakistan",
+    period: "2026 – 2028",
+    detail: "CGPA: 3.29 / 4.00",
+  },
+  {
     degree: "BS Computer Science",
     school: "The University of Lahore",
     location: "Lahore, Pakistan",
