@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { profile } from "../data/portfolio.js";
+
+// 3D scene is heavy (three.js) — load it lazily and ONLY on desktop.
+const Hero3D = lazy(() => import("./Hero3D.jsx"));
 
 // Staggered entrance animation for the hero contents.
 const container = {
@@ -14,6 +22,40 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+// -------------------------------------------------------------------------
+// Magnetic — wraps a button/link so it is gently "pulled" toward the cursor
+// when hovered, then springs back. Pure Framer Motion, no extra deps.
+// -------------------------------------------------------------------------
+function Magnetic({ children, strength = 0.35 }) {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 200, damping: 15, mass: 0.2 });
+  const sy = useSpring(y, { stiffness: 200, damping: 15, mass: 0.2 });
+
+  function onMove(e) {
+    const r = ref.current.getBoundingClientRect();
+    x.set((e.clientX - (r.left + r.width / 2)) * strength);
+    y.set((e.clientY - (r.top + r.height / 2)) * strength);
+  }
+  function onLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ x: sx, y: sy }}
+      className="inline-block"
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Hero() {
   // Cycle through the rotating job titles.
   const [titleIndex, setTitleIndex] = useState(0);
@@ -24,6 +66,26 @@ export default function Hero() {
     );
     return () => clearInterval(id);
   }, []);
+
+  // Only mount the WebGL scene on desktop + when motion is allowed.
+  const [show3D, setShow3D] = useState(false);
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 1024px)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setShow3D(wide && !reduced);
+  }, []);
+
+  // Mouse-parallax for the glow orbs — the background subtly "looks at"
+  // the cursor, giving the whole hero a sense of depth.
+  const ox = useMotionValue(0);
+  const oy = useMotionValue(0);
+  const orbX = useSpring(ox, { stiffness: 60, damping: 20 });
+  const orbY = useSpring(oy, { stiffness: 60, damping: 20 });
+  function handleParallax(e) {
+    const { innerWidth, innerHeight } = window;
+    ox.set((e.clientX / innerWidth - 0.5) * 50);
+    oy.set((e.clientY / innerHeight - 0.5) * 50);
+  }
 
   // Pre-built links
   const mailto = `mailto:${profile.email}`;
@@ -41,11 +103,25 @@ export default function Hero() {
   return (
     <section
       id="home"
+      onMouseMove={handleParallax}
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
-      {/* Atmospheric glows for depth */}
-      <div className="pointer-events-none absolute left-1/4 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-72 w-72 translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
+      {/* Real 3D WebGL scene (desktop only) */}
+      {show3D && (
+        <Suspense fallback={null}>
+          <Hero3D />
+        </Suspense>
+      )}
+
+      {/* Atmospheric glows with mouse parallax */}
+      <motion.div
+        style={{ x: orbX, y: orbY }}
+        className="pointer-events-none absolute left-1/4 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+      />
+      <motion.div
+        style={{ x: orbY, y: orbX }}
+        className="pointer-events-none absolute bottom-1/4 right-1/4 h-72 w-72 translate-x-1/2 rounded-full bg-accent/15 blur-[120px]"
+      />
 
       <motion.div
         variants={container}
@@ -102,30 +178,36 @@ export default function Hero() {
           {profile.intro}
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* CTA buttons — now magnetic */}
         <motion.div
           variants={item}
           className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
-          <a
-            href="#projects"
-            className="rounded-full bg-gradient-to-r from-primary to-accent px-7 py-3 font-medium text-bg transition-transform hover:scale-105"
-          >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full glass px-7 py-3 font-medium text-text transition-colors hover:text-primary"
-          >
-            Get in Touch
-          </a>
-          <a
-            href={profile.resumeUrl}
-            download
-            className="inline-flex items-center gap-2 rounded-full glass px-7 py-3 font-medium text-text transition-colors hover:text-accent"
-          >
-            <FiDownload /> Download Resume
-          </a>
+          <Magnetic>
+            <a
+              href="#projects"
+              className="inline-block rounded-full bg-gradient-to-r from-primary to-accent px-7 py-3 font-medium text-bg transition-transform hover:scale-105"
+            >
+              View Projects
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-block rounded-full glass px-7 py-3 font-medium text-text transition-colors hover:text-primary"
+            >
+              Get in Touch
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href={profile.resumeUrl}
+              download
+              className="inline-flex items-center gap-2 rounded-full glass px-7 py-3 font-medium text-text transition-colors hover:text-accent"
+            >
+              <FiDownload /> Download Resume
+            </a>
+          </Magnetic>
         </motion.div>
 
         {/* Social icons */}
