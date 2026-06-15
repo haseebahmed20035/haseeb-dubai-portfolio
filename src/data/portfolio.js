@@ -115,16 +115,6 @@ export const experience = [
 // ----- Projects (EDIT THESE) -----
 export const projects = [
   {
-    name: "AI Notes Generator",
-    tagline: "Agentic AI",
-    tech: ["Python", "Streamlit", "Hugging Face API", "PyMuPDF", "Tesseract OCR", "Docker"],
-    description:
-      "An agentic AI web app that converts PowerPoint, PDF, and image files into study notes, summaries, exam questions, and solved case scenarios. An agent detects the file type, routes to the right extractor (with OCR for scanned files), and selects the AI task. Large files are processed in chunks for full coverage, and it is containerized with Docker and deployed on Hugging Face Spaces.",
-    // OPTIONAL: add your live demo and repo links here (leave "" to hide the button)
-    live: "https://huggingface.co/spaces/haseebahmed2003/ai-notes-generator",
-    repo: "",
-  },
-  {
     name: "UOL Transportation App",
     tagline: "Final Year Project",
     tech: ["React Native", "Node.js", "Express.js", "MySQL", "Google Maps API", "REST APIs"],
@@ -133,6 +123,25 @@ export const projects = [
     live: "",
     repo: "https://github.com/haseebahmed20035/UOL-Transportation-Frontend",
   },
+  {
+    name: "AI Notes Generator",
+    tagline: "Agentic AI",
+    tech: ["Python", "Streamlit", "Hugging Face API", "PyMuPDF", "Tesseract OCR", "Docker"],
+    description:
+      "An agentic AI web app that converts PowerPoint, PDF, and image files into study notes, summaries, exam questions, and solved case scenarios. An agent detects the file type, routes to the right extractor (with OCR for scanned files), and selects the AI task. Large files are processed in chunks for full coverage, and it is containerized with Docker and deployed on Hugging Face Spaces.",
+    // OPTIONAL: add your live demo and repo links here (leave "" to hide the button)
+    live: "https://huggingface.co/spaces/haseebahmed2003/ai-notes-generator",
+    repo: "https://github.com/haseebahmed20035/ai-notes-generator",
+  },
+  {
+  name: "AI Interview Coach Agent",
+  tagline: "Agentic AI",
+  tech: ["Python", "Streamlit", "Gemini/Groq API", "SQLite", "ReportLab", "Hugging Face Spaces"],
+  description:
+    "A multi-agent (agentic AI) platform that simulates real technical and HR interviews. Specialized agents generate role-based questions, manage the interview flow, evaluate answers on correctness, clarity, completeness, and technical accuracy, and produce a final performance report with strengths, weaknesses, and personalized improvement recommendations. Includes multiple difficulty levels, SQLite-based session history, and downloadable PDF reports generated with ReportLab, deployed on Hugging Face Spaces using free, open-source tools.",
+  live: "https://huggingface.co/spaces/haseebahmed2003/ai-interview-coach-agent",
+  repo: "https://github.com/haseebahmed20035/ai-interview-coach-agent",
+},
 ];
 
 // ----- Education timeline (EDIT THESE) -----
