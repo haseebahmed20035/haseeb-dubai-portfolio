@@ -10,7 +10,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label="Toggle dark and light mode"
-      className="grid h-10 w-10 place-items-center rounded-full glass text-primary transition-colors hover:text-accent"
+      className="grid w-10 h-10 transition-colors rounded-full place-items-center glass text-primary hover:text-accent"
     >
       <motion.span
         key={theme}

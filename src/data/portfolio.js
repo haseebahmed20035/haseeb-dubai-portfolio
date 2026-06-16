@@ -7,18 +7,17 @@
 // ----- Personal / contact details (EDIT THESE) -----
 export const profile = {
   name: "Haseeb Ahmed",
-  // Rotating titles shown in the hero section
   titles: [
     "AI Automation Engineer",
     "Full-Stack Mobile Developer",
     "React Native Developer",
   ],
-  location: "Lahore, Pakistan",
+  location: "Dubai, UAE",
+  visaStatus: "Family Sponsor Visa",
   email: "haseeb.ahmed20035@gmail.com",
   // Phone in international format WITHOUT +, spaces, or dashes (for WhatsApp link)
   whatsapp: "923349646308",
-  // Phone shown to the reader (display only)
-  phoneDisplay: "+92-334-9646308",
+  phoneDisplay: "+971 52 335 1306",
   github: "https://github.com/haseebahmed20035",
   linkedin: "https://linkedin.com/in/haseeb-ahmed-548b00252",
   // Resume file lives in the /public folder. Replace public/resume.pdf with
