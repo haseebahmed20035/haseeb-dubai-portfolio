@@ -16,7 +16,7 @@ export const profile = {
   visaStatus: "Family Sponsor Visa",
   email: "haseeb.ahmed20035@gmail.com",
   // Phone in international format WITHOUT +, spaces, or dashes (for WhatsApp link)
-  whatsapp: "923349646308",
+  whatsapp: "971523351306",
   phoneDisplay: "+971 52 335 1306",
   github: "https://github.com/haseebahmed20035",
   linkedin: "https://linkedin.com/in/haseeb-ahmed-548b00252",
