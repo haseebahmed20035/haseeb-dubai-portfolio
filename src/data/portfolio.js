@@ -1,14 +1,9 @@
-// =========================================================================
-//  PORTFOLIO DATA
-//  This is the ONLY file you need to edit to update your content.
-//  Change the values below and the whole site updates automatically.
-// =========================================================================
-
-// ----- Personal / contact details (EDIT THESE) -----
+// ----- Personal / contact details -----
 export const profile = {
   name: "Haseeb Ahmed",
-  titles: [
+ titles: [
     "AI Automation Engineer",
+    "Agentic AI Engineer",
     "Full-Stack Mobile Developer",
     "React Native Developer",
   ],
@@ -27,14 +22,14 @@ export const profile = {
     "I build intelligent systems and full-stack mobile apps, from agentic AI tools that turn documents into study material, to a complete university transport platform with live GPS tracking.",
 };
 
-// ----- About section paragraphs (EDIT THESE) -----
+// ----- About section paragraphs -----
 export const about = [
   "I am an AI Automation Engineer and full-stack mobile developer skilled in React Native, Node.js, Express.js, REST APIs, MySQL, and Firebase, with growing expertise in LLM integration, agentic AI, and AI workflow automation.",
   "I have built an end-to-end university transport management system as my Final Year Project, combining real-time GPS tracking, role-based authentication, and relational database design, as well as a deployed AI document-to-notes application.",
   "I am seeking roles in AI Automation, AI Integration, and Intelligent Systems Development.",
 ];
 
-// ----- Core skills, grouped by category (EDIT THESE) -----
+// ----- Core skills, grouped by category -----
 export const skills = [
   {
     category: "Mobile & Frontend",
@@ -96,23 +91,32 @@ export const skills = [
   },
 ];
 
-// ----- Experience timeline (EDIT THESE) -----
+// ----- Experience timeline -----
 export const experience = [
   {
-    role: "Front-End Developer Intern",
+    role: "Agentic AI Engineer Intern",
     company: "ReownLogics",
     location: "Lahore, Pakistan",
     period: "May 2025 – Sep 2025",
     points: [
-      "Developed and optimized responsive mobile UI components in React Native for Android applications.",
-      "Integrated Firebase Authentication and Realtime Database into production apps; consumed and integrated REST APIs for dynamic data handling.",
-      "Collaborated with senior developers on debugging, testing, code reviews, and deployment, improving app stability and performance.",
+      "Contributed to multiple web-based projects involving agentic AI, integrating LLMs to automate workflows and build intelligent, task-driven features.",
+      "Applied prompt engineering and LLM API integration to design AI agents that handle multi-step tasks, with strong attention to accuracy and reliability.",
+      "Collaborated with senior developers on building, testing, and refining AI-driven features, contributing creative solutions that improved overall product quality.",
     ],
   },
 ];
 
-// ----- Projects (EDIT THESE) -----
+// ----- Projects -----
 export const projects = [
+  {
+  name: "AI Interview Coach Agent",
+  tagline: "Agentic AI",
+  tech: ["Python", "Streamlit", "Gemini", "ReportLab", "Hugging Face Spaces"],
+  description:
+    "A multi-agent (agentic AI) platform that simulates real technical and HR interviews. Specialized agents generate role-based questions, manage the interview flow, evaluate answers on correctness, clarity, completeness, and technical accuracy, and produce a final performance report with strengths, weaknesses, and personalized improvement recommendations. Includes downloadable PDF reports generated with ReportLab, deployed on Hugging Face Spaces.",
+  live: "https://huggingface.co/spaces/haseebahmed2003/ai-interview-coach-agent",
+  repo: "https://github.com/haseebahmed20035/ai-interview-coach-agent",
+},
   {
     name: "UOL Transportation App",
     tagline: "Final Year Project",
@@ -132,15 +136,6 @@ export const projects = [
     live: "https://huggingface.co/spaces/haseebahmed2003/ai-notes-generator",
     repo: "https://github.com/haseebahmed20035/ai-notes-generator",
   },
-  {
-  name: "AI Interview Coach Agent",
-  tagline: "Agentic AI",
-  tech: ["Python", "Streamlit", "Gemini", "ReportLab", "Hugging Face Spaces"],
-  description:
-    "A multi-agent (agentic AI) platform that simulates real technical and HR interviews. Specialized agents generate role-based questions, manage the interview flow, evaluate answers on correctness, clarity, completeness, and technical accuracy, and produce a final performance report with strengths, weaknesses, and personalized improvement recommendations. Includes downloadable PDF reports generated with ReportLab, deployed on Hugging Face Spaces.",
-  live: "https://huggingface.co/spaces/haseebahmed2003/ai-interview-coach-agent",
-  repo: "https://github.com/haseebahmed20035/ai-interview-coach-agent",
-},
 ];
 
 // ----- Education timeline -----
