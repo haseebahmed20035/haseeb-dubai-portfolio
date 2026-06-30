@@ -94,14 +94,15 @@ export const skills = [
 // ----- Experience timeline -----
 export const experience = [
   {
-    role: "Agentic AI Engineer Intern",
+    role: "Front-End Developer Intern",
     company: "ReownLogics",
     location: "Lahore, Pakistan",
     period: "May 2025 – Sep 2025",
     points: [
-      "Contributed to multiple web-based projects involving agentic AI, integrating LLMs to automate workflows and build intelligent, task-driven features.",
-      "Applied prompt engineering and LLM API integration to design AI agents that handle multi-step tasks, with strong attention to accuracy and reliability.",
-      "Collaborated with senior developers on building, testing, and refining AI-driven features, contributing creative solutions that improved overall product quality.",
+      "Learned HTML, CSS, and JavaScript fundamentals, then progressed to React JS to build interactive, component-based web interfaces.",
+      "Practiced converting Figma designs into responsive web pages, first with plain HTML/CSS and later by rebuilding them in React JS as skills advanced; also learned React Native and built multiple mobile app screens from Figma as practice.",
+      "Collaborated with the development team on real web-based projects, translating design requirements into functional, well-structured front-end components with strong attention to detail.",
+      "Demonstrated a strong work ethic and consistently delivered high-quality, polished work throughout the internship.",
     ],
   },
 ];
@@ -109,14 +110,23 @@ export const experience = [
 // ----- Projects -----
 export const projects = [
   {
-  name: "AI Interview Coach Agent",
-  tagline: "Agentic AI",
-  tech: ["Python", "Streamlit", "Gemini", "ReportLab", "Hugging Face Spaces"],
-  description:
-    "A multi-agent (agentic AI) platform that simulates real technical and HR interviews. Specialized agents generate role-based questions, manage the interview flow, evaluate answers on correctness, clarity, completeness, and technical accuracy, and produce a final performance report with strengths, weaknesses, and personalized improvement recommendations. Includes downloadable PDF reports generated with ReportLab, deployed on Hugging Face Spaces.",
-  live: "https://huggingface.co/spaces/haseebahmed2003/ai-interview-coach-agent",
-  repo: "https://github.com/haseebahmed20035/ai-interview-coach-agent",
-},
+    name: "AI Notes Generator",
+    tagline: "Agentic AI",
+    tech: ["Python", "Streamlit", "Hugging Face API", "PyMuPDF", "Tesseract OCR", "Docker"],
+    description:
+      "An agentic AI web app that converts PowerPoint, PDF, and image files into study notes, summaries, exam questions, and solved case scenarios. An agent detects the file type, routes to the right extractor (with OCR for scanned files), and selects the AI task. Large files are processed in chunks for full coverage, and it is containerized with Docker and deployed on Hugging Face Spaces.",
+    live: "https://huggingface.co/spaces/haseebahmed2003/ai-notes-generator",
+    repo: "https://github.com/haseebahmed20035/ai-notes-generator",
+  },
+  {
+    name: "AI Interview Coach Agent",
+    tagline: "Agentic AI",
+    tech: ["Python", "Streamlit", "Gemini", "ReportLab", "Hugging Face Spaces"],
+    description:
+      "A multi-agent (agentic AI) platform that simulates real technical and HR interviews. Specialized agents generate role-based questions, manage the interview flow, evaluate answers on correctness, clarity, completeness, and technical accuracy, and produce a final performance report with strengths, weaknesses, and personalized improvement recommendations. Includes downloadable PDF reports generated with ReportLab, deployed on Hugging Face Spaces.",
+    live: "https://huggingface.co/spaces/haseebahmed2003/ai-interview-coach-agent",
+    repo: "https://github.com/haseebahmed20035/ai-interview-coach-agent",
+  },
   {
     name: "UOL Transportation App",
     tagline: "Final Year Project",
@@ -125,16 +135,6 @@ export const projects = [
       "A full-stack university transport management system for the University of Lahore with independent Admin, Student, and Driver modules. Features live bus tracking, route and stop management, transport request handling, attendance, and OTP-based authentication, backed by a normalized MySQL database with 9+ tables.",
     live: "",
     repo: "https://github.com/haseebahmed20035/UOL-Transportation-Frontend",
-  },
-  {
-    name: "AI Notes Generator",
-    tagline: "Agentic AI",
-    tech: ["Python", "Streamlit", "Hugging Face API", "PyMuPDF", "Tesseract OCR", "Docker"],
-    description:
-      "An agentic AI web app that converts PowerPoint, PDF, and image files into study notes, summaries, exam questions, and solved case scenarios. An agent detects the file type, routes to the right extractor (with OCR for scanned files), and selects the AI task. Large files are processed in chunks for full coverage, and it is containerized with Docker and deployed on Hugging Face Spaces.",
-    // OPTIONAL: add your live demo and repo links here (leave "" to hide the button)
-    live: "https://huggingface.co/spaces/haseebahmed2003/ai-notes-generator",
-    repo: "https://github.com/haseebahmed20035/ai-notes-generator",
   },
 ];
 
